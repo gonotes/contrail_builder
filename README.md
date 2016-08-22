@@ -2,19 +2,41 @@
 
 Docker image for contrail build env
 
-Usage:
+# Usage
+
+## fetch build env
 
 ```
+docker pull nati/contrail_builder
 docker run -ti nati/contrail_builder
 ```
 
+## Edit source code in your host machine
+
 You can also have source codes in your local machine.
 
+- Step1: Clone source code in $/Users/nueno/work/contrail_dev
+- Step2: make a hard link for that /Users/nueno/work/contrail_dev
+
 ```
-docker run -v $LOCAL_DIR_IN_FULL_PATH:/opt/contrail --name contrail_builder -ti contrail_builder
+docker run -v $LOCAL_DIR_IN_FULL_PATH:/opt/local/contrail -ti nati/contrail_builder
+
+cp -r /opt/contrail/* /opt/local/contrail
+repo sync
+mv /opt/contrail/controller /opt/contrail/controller_backup
+ln -s /opt/local/contrail/controller  /opt/contrail/controller
+scons --kernel-dir=/usr/src/linux-headers-4.2.0-27-generic
+
 ```
 
 Note that local dir should be full path in mac os X or Windows.
+(eg /Users/nueno/work/contrail_dev )
+
+# Build latest docker image
+
+```
+docker build -t nati/contrail_builder .
+```
 
 # Utilities:
 
