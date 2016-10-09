@@ -20,7 +20,8 @@ RUN dpkg -i *.deb
 
 RUN mkdir -p /opt/contrail
 
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /bin/repo
+#RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /bin/repo
+ADD repo /bin/repo
 RUN chmod a+x /bin/repo
 
 ADD setup.sh /setup.sh
