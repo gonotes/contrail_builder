@@ -1,6 +1,7 @@
 # Contrail builder docker image
 
 Docker image for contrail build env
+在原有的基础上修改repo的操作，使得不用fq也能获取代码
 
 # Usage
 
