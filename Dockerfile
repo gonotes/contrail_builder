@@ -19,6 +19,7 @@ RUN wget http://downloads.datastax.com/cpp-driver/ubuntu/14.04/dependencies/libu
 RUN dpkg -i *.deb
 
 RUN mkdir -p /opt/contrail
+ADD repo.tar /opt/contrail/repo.tar
 
 #RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /bin/repo
 ADD repo /bin/repo
